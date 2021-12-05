@@ -1,3 +1,4 @@
+<!-- ユーザー登録 -->
 <!DOCTYPE html>
 <html lang="ja">
 

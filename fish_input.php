@@ -1,14 +1,21 @@
 <?php
 
+//--------------------魚のテーブルに登録フォーム---------------------------//
+
 // セッションの開始
-//session_start();
+session_start();
 //関数読み込み
 include('functions.php');
 //セッション状態の確認の関数
-//check_session_id();
+check_session_id();
 
-// var_dump($_SESSION);
+
+$date_id = $_GET['id'];
+$user_id = $_SESSION['user_id'];
+
+// var_dump($date_id);
 // exit();
+
 
 ?>
 
@@ -31,6 +38,7 @@ include('functions.php');
   <div id="wrapper">
 
     <h1>Fish Input</h1>
+    <a href="main.php" id="logout_btn">top</a>
     <a href="logout.php">logout</a>
 
     <section id="input_section">
@@ -60,7 +68,8 @@ include('functions.php');
         </div>
         <!-- ユーザーIDを取得しておく部分 -->
         <div>
-          <input type="hidden" name="user_id" value="<?= $_SESSION['user_id'] ?>">
+          <input type="hidden" name="user_id" value=<?= $user_id ?>>
+          <input type="hidden" name="date_id" value=<?= $date_id ?>>
         </div>
 
         <!-- 登録ボタン -->
@@ -81,7 +90,6 @@ include('functions.php');
   <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
   <script>
-
     const categoryArray = [
       "ベラ科",
       "ハタ科",
@@ -108,7 +116,6 @@ include('functions.php');
 
     //selectタグの中に作成
     $('#category').html(tagArray);
-
   </script>
 </body>
 
