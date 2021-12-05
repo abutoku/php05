@@ -54,6 +54,7 @@ if (!$val) { //もしユーザーがいなければ
   $_SESSION = array(); //セッションを一旦リセット
   $_SESSION['session_id'] = session_id(); //セッションIDを取得
   $_SESSION['is_admin'] = $val['is_admin']; //管理者ユーザと一般ユーザの識別に使用
+  $_SESSION['user_id'] = $val['id']; //管理者ユーザと一般ユーザの識別に使用
   $_SESSION['username'] = $val['username']; //ユーザー名を取得
   header("Location:main.php");//main.phpへ
   exit();

@@ -4,7 +4,6 @@
 //session_start();
 //関数読み込み
 include('functions.php');
-
 //セッション状態の確認の関数
 //check_session_id();
 
@@ -61,7 +60,7 @@ include('functions.php');
 
     </section>
   </div>
-  
+
   <!-- jquery読み込み -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
