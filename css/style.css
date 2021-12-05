@@ -1,0 +1,25 @@
+
+* {
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#profile_image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+#header_right {
+  display: flex;
+}
+
+#logout_btn {
+  border: 1px solid #000;
+  margin-left: 20px;
+}
