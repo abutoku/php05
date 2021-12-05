@@ -3,6 +3,12 @@
   box-sizing: border-box;
 }
 
+#wrapper {
+  width: 90%;
+}
+
+/* ----main.php  -----------------------------------------------*/
+
 header {
   display: flex;
   justify-content: space-between;
@@ -22,4 +28,14 @@ header {
 #logout_btn {
   border: 1px solid #000;
   margin-left: 20px;
+}
+ 
+/* ----date_input.php  -----------------------------------------------*/
+
+#input_section {
+  padding: 32px;
+}
+
+#fish_input_btn {
+  margin-top:24px;
 }
