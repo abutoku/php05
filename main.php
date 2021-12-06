@@ -49,7 +49,7 @@ foreach ($result as $record) {
 }
 
 //タグづけ
-//<a href=view.php?id=date_id><li class=btn date_txt>date</li></a>
+//<a href=view.php?id=date_id<li class=btn date_txt> date </li></a>
 
 ?>
 

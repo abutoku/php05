@@ -15,7 +15,7 @@ a:visited,
 a:hover, 
 a:active {  
     text-decoration: none;  
-    color: #000;  
+    color: #454545;  
 } 
 /* リストの点を消す */
 li {
@@ -84,7 +84,6 @@ header {
   text-align: center;
   line-height:32px;
   width: 60px;
-  
   background-color: #006fbe;
   border-radius: 10px;
   color: #fff;
@@ -99,6 +98,33 @@ header {
 }
 
 /* ----date_input.php  -----------------------------------------------*/
+
+/* トップリンクボタン部分 */
+#top_btn {
+  text-align: center;
+  line-height:32px;
+  width: 60px;
+  background-color: #006fbe;
+  border-radius: 10px;
+  color: #fff;
+}
+
+/* データ入力部分 */
+#date_input_section {
+  margin-bottom: 24px;
+}
+
+#date_input_section input {
+  height: 32px;
+  width: 180px;
+  margin-right: 24px;
+  font-size: 16px;
+}
+#date_input_section button {
+  height: 32px;
+}
+
+
 
 #input_section {
   padding: 32px;
