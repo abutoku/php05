@@ -1,7 +1,9 @@
 <?php
 
-var_dump($_GET);
-exit();
+// ------------日付ごとの詳細ページ-------------------------------------//
+
+// var_dump($_GET);
+// exit();
 
 // セッションの開始
 session_start();
@@ -11,10 +13,14 @@ include('functions.php');
 check_session_id();
 
 $date_id = $_GET['id'];
-var_dump($date_id);
+
 
   // DB接続
   $pdo = connect_to_db(); //データベース接続の関数、$pdoに受け取る
+
+  $sql = 'SELECT * FROM fish_table WHERE date_id = :date_id ORDER BY fish_name ASC';
+  $stmt = $pdo->prepare($sql);
+  $stmt->bindValue(':date_id', $date_id, PDO::PARAM_STR);
 
 
   try {
@@ -27,10 +33,28 @@ var_dump($date_id);
   // SQL実行の処理
   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-echo '<pre>';
-var_dump($result);
-echo '</pre>';
-exit();
+// echo '<pre>';
+// var_dump($result);
+// echo '</pre>';
+// exit();
+
+$output = "";
+foreach ($result as $record) {
+  $output .= "
+  <div class=fish_contents>
+
+    <div id=output{$record['id']}>
+      <div>{$record['fish_name']}</div>
+      <div class=infomation>
+        <div>{$record['category']}</div>
+        <div>水深{$record['depth']}ｍ</div>
+        <div>水温{$record['temp']}℃</div>
+      </div>
+    </div>
+
+  <div>
+";
+}
 
 
 

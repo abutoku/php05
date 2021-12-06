@@ -3,33 +3,101 @@
   box-sizing: border-box;
 }
 
+/* 画面幅 */
 #wrapper {
   width: 90%;
+  margin:0 auto;
+}
+
+/* リンクのスタイルを初期化 */
+a:link,
+a:visited,
+a:hover, 
+a:active {  
+    text-decoration: none;  
+    color: #000;  
+} 
+/* リストの点を消す */
+li {
+  list-style: none;
+}
+
+/* ボタンのカーソル設定 */
+.btn {
+  cursor: pointer;
 }
 
 /* ----main.php  -----------------------------------------------*/
 
+/* メインヘッダー */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+/* ヘッダー左側部分 */
+#header_left {
+  margin-left: 24px;
+}
+
+#header_left h1 {
+  font-size: 42px;
+}
+
 #profile_image {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 }
 
+/* ヘッダー右側部分 */
 #header_right {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 24px;
+}
+
+#user_name {
+  font-size: 16px;
+  font-weight: bold;
 }
 
 #logout_btn {
-  border: 1px solid #000;
+  text-align: center;
+  line-height:42px;
+  width: 60px;
   margin-left: 20px;
+  background-color: #006fbe;
+  border-radius: 10px;
+  color: #fff;
 }
- 
+
+/* 追加ボタン部分 */
+#top_btn_section {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+#add_btn {
+  text-align: center;
+  line-height:32px;
+  width: 60px;
+  
+  background-color: #006fbe;
+  border-radius: 10px;
+  color: #fff;
+}
+
+/* 日付リスト部分 */
+
+.date_txt {
+  font-size: 24px;
+  color: #454545;
+  margin-bottom: 12px;
+}
+
 /* ----date_input.php  -----------------------------------------------*/
 
 #input_section {
@@ -39,3 +107,4 @@ header {
 #fish_input_btn {
   margin-top:24px;
 }
+

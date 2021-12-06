@@ -1,5 +1,4 @@
 <?php
-
 //--------------------トップ画面-----------------------------------------------//
 
 // セッションの開始
@@ -45,9 +44,12 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $output = ""; //表示のための変数
 foreach ($result as $record) {
     $output .= "
-    <a href=date_view.php?id={$record["id"]}><li>{$record["date"]}</li></a>
+    <a href=view.php?id={$record["id"]}><li class=date_txt>{$record["date"]}</li></a>
 ";
 }
+
+//タグづけ
+//<a href=view.php?id=date_id><li class=btn date_txt>date</li></a>
 
 ?>
 
@@ -59,17 +61,10 @@ foreach ($result as $record) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Fish Data</title>
+  <title>Fish LOG</title>
 
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/style.css">
-
-  <!-- bootstrap css-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
-  <!-- bootstrap toggle -->
-  <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
-
 
 </head>
 
@@ -79,29 +74,31 @@ foreach ($result as $record) {
 
     <!-- ヘッダー左側 -->
     <div id="header_left">
-      <h1>Fish Data</h1>
+      <h1>FISH Log</h1>
       <div><?= $settings?></div>
-      <input type="checkbox" checked data-toggle="toggle" data-on="Log" data-off="Picture" data-onstyle="primary" data-offstyle="warning">
     </div>
 
     <!-- ヘッダー右側 -->
     <div id="header_right">
       <img src="./img/face.JPG" id="profile_image" alt="プロフィール画像">
-      <div><?=$_SESSION['username']?></div>
-      <a href="logout.php" id="logout_btn">logout</a>
+      <div id="user_name"><?=$_SESSION['username']?></div>
+      <a href="logout.php" id="logout_btn" class="btn">logout</a>
     </div>
 
   </header>
 
   <div id="wrapper">
-    <section>
+
+    <!-- データ追加ボタン -->
+    <section id="top_btn_section">
       <a href="date_input.php">
-        <div>入力画面</div>
+        <div id="add_btn" class="add">add</div>
       </a>
     </section>
 
+    <!-- 日付とポイント名出力部分 -->
     <section> 
-      <ul>
+      <ul id="date_list">
         <?= $output ?>
       <ul>
     </section>
@@ -111,12 +108,6 @@ foreach ($result as $record) {
   <!-- jquery読み込み -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-  <!-- bootstrap js -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-
-  <!-- bootstrap toggle -->
-  <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
 </body>
-
 </html>
