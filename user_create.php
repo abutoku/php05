@@ -52,7 +52,7 @@ try {
 }
 
 //処理が終わった後のページ移動
-header("Location:user_input.php");
+header("Location:login.php");
 exit();
 
 

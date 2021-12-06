@@ -9,15 +9,22 @@ include('functions.php');
 //セッション状態の確認の関数
 check_session_id();
 
+//変数にユーザーIDとユーザータイプを取得
 $user_id = $_SESSION['user_id'];
+$admin = $_SESSION['is_admin'];
+
+//管理者ユーザであれば編集ボタンを表示
+if($admin === '1'){
+  $settings ="<a href=user_list.php>ユーザー管理</a>";
+}
 
 // DB接続
 $pdo = connect_to_db(); //データベース接続の関数、$pdoに受け取る
 
-$sql = 'SELECT * FROM date_table as x join fish_table as y on x.id = y.date_id where x.user_id = :user_id';
+//date-tableからuserIDが一致しているものを取得
+$sql = 'SELECT * FROM date_table WHERE user_id = :user_id ORDER BY date DESC';
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
-
+$stmt->bindValue(':user_id',$user_id, PDO::PARAM_STR);
 
 try {
   $status = $stmt->execute();
@@ -34,24 +41,13 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // echo '</pre>';
 // exit();
 
-// //繰り返し処理を用いて，取得したデータから HTML タグを生成する
-//   $output = ""; //表示のための変数
-//   foreach ($result as $record) {
-//     $output .= "
-//     <li><a href=fish_input.php?id={$record["id"]}>{$record["date"]}</a></li>
-//     ";
-
-//     }
-
-
-
-
-
-
-
-
-
-
+//繰り返し処理を用いて，取得したデータから HTML タグを生成する
+$output = ""; //表示のための変数
+foreach ($result as $record) {
+    $output .= "
+    <a href=date_view.php?id={$record["id"]}><li>{$record["date"]}</li></a>
+";
+}
 
 ?>
 
@@ -84,6 +80,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- ヘッダー左側 -->
     <div id="header_left">
       <h1>Fish Data</h1>
+      <div><?= $settings?></div>
       <input type="checkbox" checked data-toggle="toggle" data-on="Log" data-off="Picture" data-onstyle="primary" data-offstyle="warning">
     </div>
 
@@ -104,9 +101,9 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </section>
 
     <section> 
-      <div>
+      <ul>
         <?= $output ?>
-      </div>
+      <ul>
     </section>
 
   </div>

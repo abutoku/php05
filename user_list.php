@@ -27,9 +27,9 @@ try {
 // SQL実行の処理
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-  //繰り返し処理を用いて，取得したデータから HTML タグを生成する
-  $output = "";//表示のための変数
-  foreach ($result as $record) {
+//繰り返し処理を用いて，取得したデータから HTML タグを生成する
+$output = ""; //表示のための変数
+foreach ($result as $record) {
   $output .= "
     <tr>
     <td>{$record["username"]}</td>
@@ -42,7 +42,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
       </td>
     </tr>
     ";
-  }
+}
 
 ?>
 
@@ -60,6 +60,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <fieldset>
     <legend>ユーザーリスト（管理画面）</legend>
     <a href="user_input.php">ユーザー登録画面</a>
+    <a href="main.php">TOP</a>
     <table>
       <thead>
         <tr>

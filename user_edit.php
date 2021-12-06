@@ -63,6 +63,7 @@ $record = $stmt->fetch(PDO::FETCH_ASSOC);
     <fieldset>
       <legend>ユーザー管理（編集）</legend>
       <a href="user_list.php">一覧画面</a>
+      
       <div>
         <!-- 一覧画面で選択されたidをもとにDBから値を取得して表示 -->
         name: <input type="text" name="username" value="<?= $record['username'] ?>">

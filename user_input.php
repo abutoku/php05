@@ -10,7 +10,6 @@
 </head>
 
 <body>
-  <a href="user_list.php">ユーザーリスト(一覧画面)</a>
   <form action="user_create.php" method="post">
     <fieldset>
       <legend>ユーザー登録</legend>
