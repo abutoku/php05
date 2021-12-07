@@ -57,7 +57,7 @@ foreach ($result as $record) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Date input</title>
+  <title>Date Input</title>
 
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/style.css">
@@ -69,7 +69,7 @@ foreach ($result as $record) {
   <header>
     <!-- ヘッダー左側 -->
     <div id="header_left">
-      <h1>Date input</h1>
+      <h1>Date Input</h1>
     </div>
 
     <!-- ヘッダー右側 -->

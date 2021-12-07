@@ -44,7 +44,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $output = ""; //表示のための変数
 foreach ($result as $record) {
     $output .= "
-    <a href=view.php?id={$record["id"]}><li class=date_txt>{$record["date"]}</li></a>
+    <a href=view.php?id={$record["id"]}><li class=date_txt>{$record["date"]} {$record['dive_site']}</li></a>
 ";
 }
 
@@ -94,6 +94,14 @@ foreach ($result as $record) {
       <a href="date_input.php">
         <div id="add_btn" class="add">add</div>
       </a>
+    </section>
+
+    <section id="search_section">
+      <form action="result.php" method="post">
+        <input type="text">
+        <button type="submit">serch</button>
+      </form>
+
     </section>
 
     <!-- 日付とポイント名出力部分 -->

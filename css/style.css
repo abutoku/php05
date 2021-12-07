@@ -27,7 +27,7 @@ li {
   cursor: pointer;
 }
 
-/* ----main.php  -----------------------------------------------*/
+/* ----main.php トップ画面 -----------------------------------------------*/
 
 /* メインヘッダー */
 header {
@@ -89,15 +89,19 @@ header {
   color: #fff;
 }
 
-/* 日付リスト部分 */
+/* 検索部分 */
+#search_section {
+  margin-bottom: 24px;
+}
 
+/* 日付リスト部分 */
 .date_txt {
   font-size: 24px;
   color: #454545;
   margin-bottom: 12px;
 }
 
-/* ----date_input.php  -----------------------------------------------*/
+/* ----date_input.php  日付テーブル入力画面-----------------------------------------------*/
 
 /* トップリンクボタン部分 */
 #top_btn {
@@ -125,6 +129,8 @@ header {
 }
 
 
+/* ----------fish_input.php 魚データ入力画面----------*/
+
 
 #input_section {
   padding: 32px;
@@ -134,3 +140,12 @@ header {
   margin-top:24px;
 }
 
+/* ---------view.php 魚データ出力ページ ----------------*/
+.fish_contents {
+  margin-bottom: 24px;
+}
+
+.fish_name {
+  font-weight: bold;
+  font-size: 24px;
+}

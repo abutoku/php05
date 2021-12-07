@@ -35,11 +35,31 @@ $user_id = $_SESSION['user_id'];
 
 <body>
 
+  <!-- ヘッダー部分 -->
+  <header>
+
+    <!-- ヘッダー左側部分 -->
+    <div id="header_left">
+      <h1>FISH Input</h1>
+    </div>
+
+    <!-- ヘッダー右側部分 -->
+    <div id="header_right">
+      <img src="./img/face.JPG" id="profile_image" alt="プロフィール画像">
+      <div id="user_name"><?= $_SESSION['username'] ?></div>
+      <a href="logout.php" id="logout_btn">logout</a>
+    </div>
+
+  </header>
+
   <div id="wrapper">
 
-    <h1>Fish Input</h1>
-    <a href="main.php" id="logout_btn">top</a>
-    <a href="logout.php">logout</a>
+    <!-- トップボタン部分 -->
+    <div id="top_btn_section">
+      <a href="main.php" id="top_btn">
+        <div id="top_btn">TOP</div>
+      </a>
+    </div>
 
     <section id="input_section">
 
@@ -75,6 +95,8 @@ $user_id = $_SESSION['user_id'];
         <!-- 登録ボタン -->
         <button type="submit" id="fish_input_btn">登録</button>
       </form>
+
+      <img src="https://api.tide736.net/tide_image.php?pc=40&hc=19&yr=2021&mn=12&dy=6&rg=day&w=640&h=512&lc=lightslategray&gcs=deepskyblue&gcf=blue&ld=on&ttd=on&tsmd=on">
 
     </section><!-- input_sectionここまで -->
 
