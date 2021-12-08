@@ -10,15 +10,17 @@ include('functions.php');
 // exit();
 
 if (
-  !isset($_POST['input_date']) || $_POST['input_date'] == '' ||
+  !isset($_POST['date']) || $_POST['date'] == '' ||
   !isset($_POST['dive_site']) || $_POST['dive_site'] == ''||
+  !isset($_POST['temp']) || $_POST['temp'] == ''||
   !isset($_POST['user_id']) || $_POST['user_id'] == ''
 ) {
   exit('ParamError'); //エラーを返す
 }
 
-$input_date = $_POST['input_date'];
+$date = $_POST['date'];
 $dive_site = $_POST['dive_site'];
+$temp = $_POST['temp'];
 $user_id = $_POST['user_id'];
 
 // var_dump($input_date);
@@ -49,11 +51,12 @@ if ($stmt->fetchColumn() > 0) {
 
 
 //SQL 登録処理実行
-$sql = 'INSERT INTO date_table(id,date,dive_site,created_at,updated_at,user_id) VALUES(NULL,:date,:dive_site,now(),now(),:user_id)';
+$sql = 'INSERT INTO date_table(id,date,dive_site,temp,created_at,updated_at,user_id) VALUES(NULL,:date,:dive_site,:temp,now(),now(),:user_id)';
 
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(':date',$input_date, PDO::PARAM_STR);
+$stmt->bindValue(':date',$date, PDO::PARAM_STR);
 $stmt->bindValue(':dive_site',$dive_site, PDO::PARAM_STR);
+$stmt->bindValue(':temp',$temp, PDO::PARAM_STR);
 $stmt->bindValue(':user_id',$user_id, PDO::PARAM_STR);
 
 try {

@@ -1,7 +1,5 @@
 <?php
-
 //---------------------ログインできるか確認------------------------------------//
-
 
 // データ受け取り
 // var_dump($_POST);
@@ -22,7 +20,6 @@ $password = $_POST['password'];
 
 // DB接続
 $pdo = connect_to_db();
-
 
 // SQL実行
 // username，password，is_deletedの3項目全てを満たすデータを抽出する
@@ -45,9 +42,10 @@ try {
   // var_dump($status);
   // exit();
 
-// ユーザ有無で条件分岐
+//ユーザー情報を$valに代入
 $val = $stmt->fetch(PDO::FETCH_ASSOC);
-
+  
+// ユーザ有無で条件分岐
 if (!$val) { //もしユーザーがいなければ
   echo "<p>ログイン情報に誤りがあります</p>"; //エラー表示
   echo "<a href=login.php>ログイン</a>"; //ログイン画面へのリンク
@@ -59,6 +57,14 @@ if (!$val) { //もしユーザーがいなければ
   $_SESSION['is_admin'] = $val['is_admin']; //管理者ユーザと一般ユーザの識別に使用
   $_SESSION['user_id'] = $val['id']; //管理者ユーザと一般ユーザの識別に使用
   $_SESSION['username'] = $val['username']; //ユーザー名を取得
-  header("Location:main.php");//main.phpへ
-  exit();
+
+  //管理者の確認
+  if ($_SESSION['user_id'] == '1'){
+    header("Location:admin.main.php");  //管理者であれば、adimin.main.phpへ
+    exit();
+  } else {
+    header("Location:main.php"); //一般ユーザーであればmain.phpへ
+    exit();
+  }
+
 }

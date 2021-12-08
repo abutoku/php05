@@ -12,10 +12,6 @@ check_session_id();
 $user_id = $_SESSION['user_id'];
 $admin = $_SESSION['is_admin'];
 
-//管理者ユーザであれば編集ボタンを表示
-if($admin === '1'){
-  $settings ="<a href=user_list.php>ユーザー管理</a>";
-}
 
 // DB接続
 $pdo = connect_to_db(); //データベース接続の関数、$pdoに受け取る

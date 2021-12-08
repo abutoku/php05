@@ -18,10 +18,15 @@ $date_id = $_GET['id'];
 // DB接続
 $pdo = connect_to_db(); //データベース接続の関数、$pdoに受け取る
 
-$sql = 'SELECT * FROM fish_table WHERE date_id = :date_id ORDER BY fish_name ASC';
+$sql = 'SELECT * FROM log_table WHERE date_id = :date_id ORDER BY fishname ASC';
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':date_id', $date_id, PDO::PARAM_STR);
 
+//SELECT * FROM date_table LEFT OUTER JOIN log_table ON date_table.id = log_table.date_id;
+
+//SELECT * FROM date_table LEFT OUTER JOIN log_table ON date_table.id = log_table.date_id WHERE log_table.date_id = :date_id ORDER BY log_table.fishname ASC;
+
+// SELECT * FROM ( date_table LEFT OUTER JOIN log_table ON date_table.id = log_table.date_id ) AS main_table WHERE main_table.date_id = 27 ORDER BY main_table.fishname ASC;
 
 try {
   $status = $stmt->execute();
@@ -42,18 +47,17 @@ $output = "";
 foreach ($result as $record) {
   $output .= "
   <div class=fish_contatiner>
-
+    <div></div>
     <div id=output{$record['id']} class=fish_contents>
-      <div class=fish_name>{$record['fish_name']}</div>
+      <div class=fish_name>{$record['fishname']}</div>
       <div class=infomation>
-        <div>{$record['category']}</div>
         <div>水深{$record['depth']}ｍ</div>
-        <div>水温{$record['temp']}℃</div>
       </div>
     </div>
 
   <div>
 ";
+
 }
 
 

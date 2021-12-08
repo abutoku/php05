@@ -39,7 +39,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $output = ""; //表示のための変数
 foreach ($result as $record) {
   $output .= "
-    <li class=date_txt><a href=fish_input.php?id={$record["id"]}>{$record["date"]}</a></li>
+    <li class=date_txt><a href=log_input.php?id={$record["id"]}>{$record["date"]} {$record['dive_site']}</a></li>
     ";
 }
 
@@ -93,10 +93,28 @@ foreach ($result as $record) {
     <!-- データ入力部分 -->
     <section id="date_input_section">
       <form action="date_create.php" method="post" id="date_form">
-        <input type="date" name="input_date">
-        Dive site:<input type="text" name="dive_site">
+
+        <!-- 日付を入力 -->
+        <input type="date" name="date">
+
+        <!-- ダイビングポイントを選択 -->
+        <div>
+          <p>Dive site</p>
+          <input type="text" name="dive_site">
+        </div>
+
+        <!-- 水温を選択 -->
+        <div>
+          <p>水温</p>
+          <input type="number" name="temp" min="0" max="40" value="20" required>
+        </div>
+
+        <!-- ユーザー名をgetで送信する準備 -->
         <input type="hidden" name="user_id" value="<?= $user_id ?>">
-        <button type="submit">add</button>
+
+        <!-- 送信ボタン -->
+        <button type="submit" id="date_add_btn">add</button>
+
       </form>
     </section>
 

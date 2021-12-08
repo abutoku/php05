@@ -63,22 +63,11 @@ $user_id = $_SESSION['user_id'];
 
     <section id="input_section">
 
-      <form action="fish_create.php" method="post">
+      <form action="log_create.php" method="post">
         <!-- 魚の名前 -->
         <div>
           <p>name</p>
-          <input type="text" name="fish_name" id="fish_name" required>
-        </div>
-
-        <!-- 魚の科を選択 -->
-        <div>
-          <select name="category" id="category" required></select>
-        </div>
-
-        <!-- 水温を選択 -->
-        <div>
-          <p>水温</p>
-          <input type="number" name="temp" min="0" max="40" value="20" required>
+          <input type="text" name="fishname" id="fish_name" required>
         </div>
 
         <!-- 水深を選択 -->
@@ -86,9 +75,11 @@ $user_id = $_SESSION['user_id'];
           <p>水深</p>
           <input type="number" name="depth" min="0" max="40" value="10" required>
         </div>
-        <!-- ユーザーIDを取得しておく部分 -->
+
         <div>
+          <!-- ユーザーIDを取得しておく部分 -->
           <input type="hidden" name="user_id" value=<?= $user_id ?>>
+          <!-- 日付のIDを取得しておく部分 -->
           <input type="hidden" name="date_id" value=<?= $date_id ?>>
         </div>
 

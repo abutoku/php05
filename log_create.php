@@ -11,9 +11,7 @@ include('functions.php');
 // exit();
 
 if (
-  !isset($_POST['fish_name']) || $_POST['fish_name'] == '' ||
-  !isset($_POST['category']) || $_POST['category'] == '' ||
-  !isset($_POST['temp']) || $_POST['temp'] == '' ||
+  !isset($_POST['fishname']) || $_POST['fishname'] == '' ||
   !isset($_POST['depth']) || $_POST['depth'] == '' ||
   !isset($_POST['user_id']) || $_POST['user_id'] == ''||
   !isset($_POST['date_id']) || $_POST['date_id'] == ''
@@ -22,28 +20,28 @@ if (
 }
 
 // データの受け取り
-$fish_name = $_POST['fish_name'];
-$category = $_POST['category'];
-$temp = $_POST['temp'];
+$fishname = $_POST['fishname'];
 $depth = $_POST['depth'];
 $user_id = $_POST['user_id'];
 $date_id = $_POST['date_id'];
+
+// var_dump($fishname);
+// var_dump($depth);
+// var_dump($user_id);
+// var_dump($date_id);
+// exit();
 
 // DB接続
 $pdo = connect_to_db(); //データベース接続の関数、$pdoに受け取る
 
 //SQL 登録処理実行
-$sql = 'INSERT INTO fish_table(id,date_id,fish_name,category,temp,depth,created_at,updated_at,user_id) VALUES(NULL, :date_id,:fish_name,:category,:temp,:depth,now(),now(),:user_id)';
-
+$sql = 'INSERT INTO log_table(id,fishname,depth,date_id,user_id,created_at,updated_at) VALUES(NULL,:fishname,:depth,:date_id,:user_id,now(),now())';
 
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(':date_id', $date_id, PDO::PARAM_STR);
-$stmt->bindValue(':fish_name', $fish_name, PDO::PARAM_STR);
-$stmt->bindValue(':category', $category, PDO::PARAM_STR);
-$stmt->bindValue(':temp', $temp, PDO::PARAM_STR);
+$stmt->bindValue(':fishname', $fishname, PDO::PARAM_STR);
 $stmt->bindValue(':depth', $depth, PDO::PARAM_STR);
+$stmt->bindValue(':date_id', $date_id, PDO::PARAM_STR);
 $stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
-
 
 try {
   $status = $stmt->execute();

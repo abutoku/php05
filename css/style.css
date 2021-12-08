@@ -1,3 +1,4 @@
+/*-------- 全体のスタイル ------------------------------*/
 
 * {
   box-sizing: border-box;
@@ -128,9 +129,13 @@ header {
   height: 32px;
 }
 
+/* データ登録ボタン*/
+#date_add_btn {
+  margin-top: 24px;
+}
 
-/* ----------fish_input.php 魚データ入力画面----------*/
 
+/* ------fish_input.php 魚データ入力画面------------------*/
 
 #input_section {
   padding: 32px;
@@ -140,7 +145,8 @@ header {
   margin-top:24px;
 }
 
-/* ---------view.php 魚データ出力ページ ----------------*/
+/* ---------view.php 魚データ出力ページ --------------------*/
+
 .fish_contents {
   margin-bottom: 24px;
 }
