@@ -69,9 +69,16 @@ $output .= "<h1 id=fish_title>{$result['name']}</h1>";
 
   <div id="wrapper">
 
-  <section id="infometion_section">
-    <?= $output ?>
-  </section>
+    <!-- トップボタン部分 -->
+    <div id="top_btn_section">
+      <a href="main.php" id="top_btn">
+        <div id="top_btn">TOP</div>
+      </a>
+    </div>
+
+    <section id="infometion_section">
+      <?= $output ?>
+    </section>
 
 
   </div>

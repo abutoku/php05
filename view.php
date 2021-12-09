@@ -15,12 +15,13 @@ $date_id = $_GET['id'];
 // DB接続
 $pdo = connect_to_db(); //データベース接続の関数、$pdoに受け取る
 
-$sql = 'SELECT * FROM log_table WHERE date_id = :date_id ORDER BY fishname ASC';
+$sql = 'SELECT * FROM log_table LEFT OUTER JOIN date_table ON log_table.date_id = date_table.id WHERE log_table.date_id = :date_id';
+// $sql = 'SELECT * FROM log_table WHERE date_id = :date_id ORDER BY fishname ASC';
 
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':date_id', $date_id, PDO::PARAM_STR);
 
-//SELECT * FROM date_table LEFT OUTER JOIN log_table ON date_table.id = log_table.date_id;
+//SELECT * FROM log_table LEFT OUTER JOIN log_table ON date_table.id = log_table.date_id;
 
 //SELECT * FROM date_table LEFT OUTER JOIN log_table ON date_table.id = log_table.date_id WHERE log_table.date_id = :date_id ORDER BY log_table.fishname ASC;
 
@@ -41,6 +42,9 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // echo '</pre>';
 // exit();
 
+$day = $result[0]['date'];
+$temp = $result[0]['temp'];
+
 $output = "";
 foreach ($result as $record) {
   $output .= "
@@ -54,7 +58,6 @@ foreach ($result as $record) {
     </div>
   <div>
 ";
-
 }
 
 
@@ -99,7 +102,12 @@ foreach ($result as $record) {
       </a>
     </div>
 
-    <section>
+    <section id="title_section">
+      <div id="date_title"><?= $day ?></div>
+      <div id="temp_title">水温:<?= $temp ?>℃</div>
+    </section>
+
+    <section id="log_list">
       <?= $output ?>
     </section>
 

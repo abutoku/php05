@@ -102,34 +102,8 @@ $user_id = $_SESSION['user_id'];
   <!-- bootstrap toggle -->
   <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
-  <script>
-    const categoryArray = [
-      "ベラ科",
-      "ハタ科",
-      "スズメダイ科",
-      "ハゼ科",
-      "フグ科",
-      "フサカサゴ科",
-      "イサキ科",
-      "チョウチョウオ科",
-      "アジ科",
-      "ヨウジウオ科",
-      "テンジクダイ科",
-      "カワハギ科",
-    ];
 
-    //タグ付のための配列
-    const tagArray = [];
-
-    //繰り返し処理ための配列
-    categoryArray.forEach((x) => {
-      tagArray.push(`<option value="${x}">${x}</option>`);
-    });
-    tagArray.unshift(`<option disabled selected value>科を選択</option>`);
-
-    //selectタグの中に作成
-    $('#category').html(tagArray);
-  </script>
+    
 </body>
 
 </html>

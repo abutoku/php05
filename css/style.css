@@ -46,6 +46,7 @@ header {
   font-size: 42px;
 }
 
+/* プロフィールイメージ */
 #profile_image {
   width: 50px;
   height: 50px;
@@ -60,11 +61,13 @@ header {
   margin-right: 24px;
 }
 
+/* ユーザー名表示 */
 #user_name {
   font-size: 16px;
   font-weight: bold;
 }
 
+/* ログアウトボタン */
 #logout_btn {
   text-align: center;
   line-height:42px;
@@ -148,11 +151,26 @@ header {
 
 /* ---------view.php 魚データ出力ページ --------------------*/
 
+#title_section {
+  margin-bottom: 32px;
+}
 
+/* 日付表示部分 */
+#date_title {
+  font-size: 32px;
+}
+
+/* 水温表示部分 */
+#temp_title {
+  font-size: 24px;
+}
+
+/* 魚表示部分 */
 .fish_contents {
   margin-bottom: 24px;
 }
 
+/* 魚表示部分 */
 .fish_name {
   font-weight: bold;
   font-size: 24px;
