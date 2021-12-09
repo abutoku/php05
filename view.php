@@ -2,8 +2,6 @@
 
 // ------------日付ごとの詳細ページ-------------------------------------//
 
-// var_dump($_GET);
-// exit();
 
 // セッションの開始
 session_start();
@@ -19,6 +17,7 @@ $date_id = $_GET['id'];
 $pdo = connect_to_db(); //データベース接続の関数、$pdoに受け取る
 
 $sql = 'SELECT * FROM log_table WHERE date_id = :date_id ORDER BY fishname ASC';
+
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':date_id', $date_id, PDO::PARAM_STR);
 
