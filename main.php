@@ -71,7 +71,6 @@ foreach ($result as $record) {
     <!-- ヘッダー左側 -->
     <div id="header_left">
       <h1>FISH Log</h1>
-      <div><?= $settings?></div>
     </div>
 
     <!-- ヘッダー右側 -->

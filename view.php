@@ -12,7 +12,6 @@ check_session_id();
 
 $date_id = $_GET['id'];
 
-
 // DB接続
 $pdo = connect_to_db(); //データベース接続の関数、$pdoに受け取る
 
@@ -48,12 +47,11 @@ foreach ($result as $record) {
   <div class=fish_contatiner>
     <div></div>
     <div id=output{$record['id']} class=fish_contents>
-      <div class=fish_name>{$record['fishname']}</div>
+      <a href=infomation.php?id={$record['fish_id']}><div class=fish_name>{$record['fishname']}</div></a>
       <div class=infomation>
         <div>水深{$record['depth']}ｍ</div>
       </div>
     </div>
-
   <div>
 ";
 

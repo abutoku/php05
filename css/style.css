@@ -125,6 +125,7 @@ header {
   margin-right: 24px;
   font-size: 16px;
 }
+
 #date_input_section button {
   height: 32px;
 }
@@ -147,6 +148,7 @@ header {
 
 /* ---------view.php 魚データ出力ページ --------------------*/
 
+
 .fish_contents {
   margin-bottom: 24px;
 }
@@ -154,4 +156,16 @@ header {
 .fish_name {
   font-weight: bold;
   font-size: 24px;
+}
+
+/* --------infomation.php 図鑑ページ------------------------------*/
+
+/* 図鑑ページ表示部分 */
+#infometion_section {
+  margin-top: 48px;
+}
+
+/* 図鑑ページの魚名 */
+#fish_title {
+  font-size:48px;
 }
