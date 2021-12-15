@@ -19,7 +19,7 @@ $pdo = connect_to_db(); //データベース接続の関数、$pdoに受け取�
 //date-tableからuserIDが一致しているものを取得
 $sql = 'SELECT * FROM date_table WHERE user_id = :user_id ORDER BY date DESC';
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(':user_id',$user_id, PDO::PARAM_STR);
+$stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
 
 try {
   $status = $stmt->execute();
@@ -31,15 +31,38 @@ try {
 // SQL実行の処理
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+
+$sql = 'SELECT profile_image FROM profile_table WHERE user_id = :user_id';
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
+
+try {
+  $status = $stmt->execute();
+} catch (PDOException $e) {
+  echo json_encode(["sql error" => "{$e->getMessage()}"]);
+  exit();
+}
+
+// SQL実行の処理
+$image = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+
+if(!$image){
+  $image["profile_image"] = 'img/null.png';
+}
+
 // echo '<pre>';
-// var_dump($result);
+// var_dump($image);
 // echo '</pre>';
 // exit();
+
+
 
 //繰り返し処理を用いて，取得したデータから HTML タグを生成する
 $output = ""; //表示のための変数
 foreach ($result as $record) {
-    $output .= "
+  $output .= "
     <a href=view.php?id={$record["id"]}><li class=date_txt>{$record["date"]} {$record['dive_site']}</li></a>
 ";
 }
@@ -75,9 +98,10 @@ foreach ($result as $record) {
 
     <!-- ヘッダー右側 -->
     <div id="header_right">
-      <img src="./img/face.JPG" id="profile_image" alt="プロフィール画像">
-      <div id="user_name"><?=$_SESSION['username']?></div>
+      <img src=<?= $image["profile_image"]?> id="profile_image">
+      <div id="user_name"><?= $_SESSION['username'] ?></div>
       <a href="logout.php" id="logout_btn" class="btn">logout</a>
+      <a href="profile_input.php">プロフィール画像を登録</a>
     </div>
 
   </header>
@@ -100,10 +124,10 @@ foreach ($result as $record) {
     </section>
 
     <!-- 日付とポイント名出力部分 -->
-    <section> 
+    <section>
       <ul id="date_list">
         <?= $output ?>
-      <ul>
+        <ul>
     </section>
 
   </div>
@@ -113,4 +137,5 @@ foreach ($result as $record) {
 
 
 </body>
+
 </html>

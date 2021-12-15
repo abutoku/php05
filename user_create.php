@@ -10,7 +10,7 @@ include('functions.php');
 
 //データの受け取り
 $username = $_POST['username'];
-$password = $_POST['password'];
+$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
 // var_dump('name');
 // var_dump('password');

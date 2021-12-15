@@ -42,6 +42,7 @@ header {
   margin-left: 24px;
 }
 
+/* ヘッダー 文字*/
 #header_left h1 {
   font-size: 42px;
 }
@@ -84,6 +85,7 @@ header {
   margin-bottom: 24px;
 }
 
+/* データ入力画面へのリンクボタン */
 #add_btn {
   text-align: center;
   line-height:32px;
@@ -139,14 +141,21 @@ header {
 }
 
 
-/* ------fish_input.php 魚データ入力画面------------------*/
+/* ------log_input.php 魚データ入力画面------------------*/
 
-#input_section {
+#log_input_section {
   padding: 32px;
+  display: flex;
+  justify-content: space-between;
 }
 
 #fish_input_btn {
   margin-top:24px;
+}
+
+#log_input_contents,
+#canvas_contents {
+  width: 50%;
 }
 
 /* ---------view.php 魚データ出力ページ --------------------*/
